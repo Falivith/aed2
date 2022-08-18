@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador de Grafos</title>
-    <script src="controller.js"></script>
+    <script src="controller.js" defer></script>
 </head>
 <body>
     <h1 id="titulo">Visualizador de Grafos</h1>
     <br>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore eius, soluta inventore consequatur numquam qui voluptas ea ullam atque? Veniam cumque corporis ratione unde quidem quos aspernatur ex nemo officia.</p>
-
+    <p>Sistema para a visualização e estudo de Grafos</p>
+    <button onclick="buttonAdd()">Adicionar Nodo</button>
+    <button onclick="connectionAdd()">Adicionar Ligação entre nodos</button>
+    <button>Atualizar Matriz</button>
+    <input type="text" id="inputtext">
     <ul id="graph1">
         <li>Glauber</li>
     </ul>
