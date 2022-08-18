@@ -18,12 +18,22 @@ class graph{
     }
 
     mostrarPeso(){
-        
-            Object.keys(this.grafo).forEach(key => {
-            console.log(key, this.grafo[key]);
+        Object.keys(this.grafo).forEach(key => {
+        console.log(key, this.grafo[key]);
           });
         }
     }
+
+    function function1() {
+        var ul = document.getElementById("graph1");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode("Four"));
+        ul.appendChild(li);
+      }
+
+      function1();
+      function1()
+      
 
 const Brasil = new graph()
 
@@ -35,5 +45,6 @@ Brasil.addNodo("Sertão do Cariri")
 Brasil.addConexao("Rio Grande do Sul", "Sertão do Cariri", 10)
 Brasil.addConexao("Paraná", "Sertão do Cariri", 20)
 Brasil.addConexao("Rio Grande do Sul", "Paraná", 54)
+
 
 Brasil.mostrarPeso()
