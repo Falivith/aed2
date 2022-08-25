@@ -34,6 +34,7 @@ function Dijkstra(Graph, Start, Finish){
     let AuxMatrix = {}
     let minPath = Infinity
     let currentNode
+    let finalpath = []
 
     // Criação da matriz de legendas [-1, Infinito] para cada vértice, feita com objetos
 
@@ -70,9 +71,23 @@ function Dijkstra(Graph, Start, Finish){
                 AuxMatrix[key][0] = currentNode
             }
         })
-        break
+        minPath = Infinity
     }
-    console.log(AuxMatrix)
+
+    currentNode = Finish
+
+    finalpath.push(Finish)
+
+    do{
+        finalpath.push(AuxMatrix[currentNode][0])
+        currentNode = AuxMatrix[currentNode][0]
+    }while(AuxMatrix[currentNode][0] != -1)
+
+    finalpath.reverse();
+    
+
+    return ("A distância mínima do Nodo " + Start + " até o nodo " + Finish + " é " + AuxMatrix[Finish][1]
+    + "\n O caminho percorrido é: " + finalpath)
 }
 
 
@@ -96,15 +111,9 @@ Grafo1.addConexao("M", "X", 1)
 Grafo1.addConexao("X", "Y", 4)
 Grafo1.addConexao("X", "Z", 4)
 
-Dijkstra(Grafo1, "T", "Z")
+let result = Dijkstra(Grafo1, "T", "Z")
 
-console.log(Grafo1)
-//Brasil.showAll()
-
-
-
-
-
+console.log(result)
 
 
 
