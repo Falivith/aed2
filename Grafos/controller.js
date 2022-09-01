@@ -14,7 +14,7 @@ class Grafo{
 
     addConexao(src, dest, weight){
         this.adjList[src][dest] = weight
-        //this.grafo[destino][saida] = peso
+        this.adjList[dest][src] = weight
     }
 
     showAll(){
@@ -36,7 +36,7 @@ function Dijkstra(Graph, Start, Finish){
     let currentNode
     let finalpath = []
 
-    // Criação da matriz de legendas [-1, Infinito] para cada vértice, feita com objetos
+    // Criação da matriz de legendas [-1, Infinito, Status (fechado, ABERTO)] para cada vértice, feita com objetos
 
     Object.keys(Graph.adjList).forEach(key => {
         AuxMatrix[key] = [-1, Infinity, true, Graph.adjList[key]]
@@ -64,11 +64,15 @@ function Dijkstra(Graph, Start, Finish){
         AuxMatrix[currentNode][2] = false
 
         // Pegar os nodos abertos "V" adjacentes, escolher o com menor peso
+        // AuxMatrix[currentNode][3][key] == Peso da adjacente analisado atualmente
+        // AuxMatrix[currentNode][1] ==      Distância do Start até o nodo atual (que foi fechado)
+        // AuxMatrix[key][1] ==              Distância do Start até o nodo adjacente que está sendo analisado
 
         Object.keys(AuxMatrix[currentNode][3]).forEach(key => {
             if(AuxMatrix[currentNode][3][key] + AuxMatrix[currentNode][1] < AuxMatrix[key][1]){
                 AuxMatrix[key][1] = AuxMatrix[currentNode][3][key] + AuxMatrix[currentNode][1]
                 AuxMatrix[key][0] = currentNode
+                debugger
             }
         })
         minPath = Infinity
@@ -85,6 +89,7 @@ function Dijkstra(Graph, Start, Finish){
 
     finalpath.reverse();
     
+    console.log(AuxMatrix)
 
     return ("A distância mínima do Nodo " + Start + " até o nodo " + Finish + " é " + AuxMatrix[Finish][1]
     + "\n O caminho percorrido é: " + finalpath)
@@ -114,11 +119,6 @@ Grafo1.addConexao("X", "Z", 4)
 let result = Dijkstra(Grafo1, "T", "Z")
 
 console.log(result)
-
-
-
-
-
 
 /*
 function buttonAdd(){
