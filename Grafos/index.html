@@ -24,25 +24,33 @@
         <br>
         <p>Peso</p>
         <input type="text" id="weight">
+        <br>
+        <br>
         <button onclick="addConexao()">Adicionar Ligação entre nodos</button>
     </div>
     <br>
+    <div id="dijkstra">
+       <p>Saída</p>
+        <input type="text" id="srcD">
+        <p>Chegada</p>
+        <input type="text" id="dstD">
+        <br>
+        <br>
+        <button onclick="dijkstraHandler()">Dijkstra!</button> 
+    </div>
     <br>
     <button onclick="atualizarMatriz()">Atualizar Grafo</button>
     <button onclick="cleanGrafo()">Limpar Grafo</button>
     <br>
     <br>
-    <p>Saída</p>
-    <input type="text">
-    <p>Chegada</p>
-    <input type="text">
-    <br>
-    <button onclick="Dijkstra()">Dijkstra!</button>
-    <br>
-    <br>
+    <div id="adj">
     <ul id="graph">
     </ul>
+    </div>
+
     <div id="algResponse">
+        <p id="field">
+        </p>
     </div>
 </body>
 </html>

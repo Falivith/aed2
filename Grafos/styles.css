@@ -3,3 +3,15 @@
     border-radius: 3px;
     padding: 10px;
 }
+
+#dijkstra{
+    background-color: rgba(82, 82, 82, 0.253);
+    border-radius: 3px;
+    padding: 10px;
+}
+
+#adj{
+    background-color: rgba(82, 82, 82, 0.253);
+    border-radius: 3px;
+    padding: 10px;
+}

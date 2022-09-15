@@ -117,8 +117,13 @@ let result = Dijkstra(Grafo1, "T", "Z")
 console.log(Grafo1)
 console.log(result)
 
-function dijkstrahandler(){
-    
+function dijkstraHandler(){
+    if(document.getElementById('srcD').value != "" &&
+    document.getElementById('dstD').value != ""){
+        let src = document.getElementById('srcD').value
+        let dst = document.getElementById('dstD').value
+        document.getElementById("field").textContent = Dijkstra(Grafo1, src, dst)
+    }
 }
 
 function buttonAdd(){
