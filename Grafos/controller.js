@@ -72,7 +72,6 @@ function Dijkstra(Graph, Start, Finish){
             if(AuxMatrix[currentNode][3][key] + AuxMatrix[currentNode][1] < AuxMatrix[key][1]){
                 AuxMatrix[key][1] = AuxMatrix[currentNode][3][key] + AuxMatrix[currentNode][1]
                 AuxMatrix[key][0] = currentNode
-                debugger
             }
         })
         minPath = Infinity
@@ -95,9 +94,7 @@ function Dijkstra(Graph, Start, Finish){
     + "\n O caminho percorrido é: " + finalpath)
 }
 
-
-
-const Grafo1 = new Grafo()
+let Grafo1 = new Grafo()
 
 Grafo1.addNodo("T")
 Grafo1.addNodo("M")
@@ -117,21 +114,108 @@ Grafo1.addConexao("X", "Y", 4)
 Grafo1.addConexao("X", "Z", 4)
 
 let result = Dijkstra(Grafo1, "T", "Z")
-
+console.log(Grafo1)
 console.log(result)
 
-/*
-function buttonAdd(){
-    let textGetter = document.getElementById("inputtext");
-    let word = nome.textGetter
-    Brasil.addNodo(word)
-    Brasil.showAll()
+function dijkstrahandler(){
+    
 }
 
-function atualizarMatriz() {
-    let ul = document.getElementById("graph1");
-    let li = document.createElement("li");
-    li.textContent = "Obscuro"
-    ul.appendChild(li);
+function buttonAdd(){
+    if(document.getElementById('inputnode').value != ""){
+    let node_name = document.getElementById('inputnode').value
+    Grafo1.addNodo(node_name)
+    atualizarMatriz();
+    document.getElementById('inputnode').value = ""
+    }
 }
-*/
+
+function cleanGrafo(){
+    Grafo1 = new Grafo();
+
+    let node_list = document.getElementById("graph");
+
+    while(node_list.firstChild){
+        node_list.removeChild(node_list.firstChild);
+    }
+}
+
+function atualizarMatriz(){
+
+    let node_list = document.getElementById("graph");
+
+    while(node_list.firstChild){
+        node_list.removeChild(node_list.firstChild);
+    }
+
+    Object.keys(Grafo1.adjList).forEach(key => {
+        let node = document.createElement("li");
+        node.textContent = key
+        node.setAttribute("id", "" + key);
+        console.log(node)
+        node_list.appendChild(node)
+
+        console.log(Object.keys(Grafo1.adjList[key]).length)
+
+        if(Object.keys(Grafo1.adjList[key]).length > 0){
+
+            let lista_interna = document.createElement("ul")
+            lista_interna.setAttribute("id", "adj" + key)
+            node_list.appendChild(lista_interna)
+
+            Object.keys(Grafo1.adjList[key]).forEach(adjacente =>{
+                let item_interno = document.createElement("li")
+                item_interno.textContent = adjacente + ": " + Grafo1.adjList[key][adjacente]
+                lista_interna.appendChild(item_interno)
+            })
+        }
+    })
+}
+
+function addConexao(){
+    if(document.getElementById('src').value != "" &&
+        document.getElementById('dst').value != "" &&
+        document.getElementById('weight').value != "" &&
+        !isNaN(document.getElementById('weight').value)
+    ){
+        let src = document.getElementById('src').value
+        let dst = document.getElementById('dst').value
+        let weight = document.getElementById('weight').value
+
+        Grafo1.addConexao(src, dst, weight)
+        atualizarMatriz()
+    }
+    else{
+        console.log("input error")
+    }
+}
+
+window.onload = function atualizarMatriz() {
+
+    let node_list = document.getElementById("graph");
+
+    Object.keys(Grafo1.adjList).forEach(key => {
+        let node = document.createElement("li");
+        node.textContent = key
+        node.setAttribute("id", "" + key);
+        console.log(node)
+        node_list.appendChild(node)
+
+        console.log(Object.keys(Grafo1.adjList[key]).length)
+
+        if(Object.keys(Grafo1.adjList[key]).length > 0){
+
+            let lista_interna = document.createElement("ul")
+            lista_interna.setAttribute("id", "adj" + key)
+            node_list.appendChild(lista_interna)
+
+            Object.keys(Grafo1.adjList[key]).forEach(adjacente =>{
+                let item_interno = document.createElement("li")
+                item_interno.textContent = adjacente + ": " + Grafo1.adjList[key][adjacente]
+                lista_interna.appendChild(item_interno)
+            })
+        }
+    })
+}
+
+

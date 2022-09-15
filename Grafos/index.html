@@ -6,20 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizador de Grafos</title>
     <script src="controller.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 id="titulo">Visualizador de Grafos</h1>
-    <br>
+    <h1 id="titulo">Dijkstra Simulador</h1>
     <p>Sistema para a visualização e estudo de Grafos</p>
+    <input type="text" id="inputnode">
     <button onclick="buttonAdd()">Adicionar Nodo</button>
     <br>
-    <button onclick="connectionAdd()">Adicionar Ligação entre nodos</button>
     <br>
-    <button>Atualizar Matriz</button>
+    <div id="AddConnection" >
+        <p>Nodo 1</p>
+        <input type="text" id="src">
+        <br>
+        <p>Nodo 2</p>
+        <input type="text" id="dst">
+        <br>
+        <p>Peso</p>
+        <input type="text" id="weight">
+        <button onclick="addConexao()">Adicionar Ligação entre nodos</button>
+    </div>
     <br>
-    <input type="text" id="inputtext">
-    <ul id="graph1">
-        <li>Lista: </li>
+    <br>
+    <button onclick="atualizarMatriz()">Atualizar Grafo</button>
+    <button onclick="cleanGrafo()">Limpar Grafo</button>
+    <br>
+    <br>
+    <p>Saída</p>
+    <input type="text">
+    <p>Chegada</p>
+    <input type="text">
+    <br>
+    <button onclick="Dijkstra()">Dijkstra!</button>
+    <br>
+    <br>
+    <ul id="graph">
     </ul>
+    <div id="algResponse">
+    </div>
 </body>
 </html>
