@@ -123,6 +123,8 @@ function dijkstraHandler(){
         let src = document.getElementById('srcD').value
         let dst = document.getElementById('dstD').value
         document.getElementById("field").textContent = Dijkstra(Grafo1, src, dst)
+        document.getElementById('srcD').value = ""
+        document.getElementById('dstD').value = ""
     }
 }
 
@@ -157,10 +159,7 @@ function atualizarMatriz(){
         let node = document.createElement("li");
         node.textContent = key
         node.setAttribute("id", "" + key);
-        console.log(node)
         node_list.appendChild(node)
-
-        console.log(Object.keys(Grafo1.adjList[key]).length)
 
         if(Object.keys(Grafo1.adjList[key]).length > 0){
 
