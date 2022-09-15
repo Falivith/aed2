@@ -186,12 +186,13 @@ function addConexao(){
         let dst = document.getElementById('dst').value
         let weight = document.getElementById('weight').value
 
-        Grafo1.addConexao(src, dst, weight)
+        Grafo1.addConexao(src, dst, parseInt(weight))
         atualizarMatriz()
     }
     else{
         console.log("input error")
     }
+    console.log(Grafo1)
 }
 
 window.onload = function atualizarMatriz() {
@@ -202,10 +203,7 @@ window.onload = function atualizarMatriz() {
         let node = document.createElement("li");
         node.textContent = key
         node.setAttribute("id", "" + key);
-        console.log(node)
         node_list.appendChild(node)
-
-        console.log(Object.keys(Grafo1.adjList[key]).length)
 
         if(Object.keys(Grafo1.adjList[key]).length > 0){
 
