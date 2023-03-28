@@ -5,7 +5,7 @@ Atividades realizadas durante a disciplina de AED2 no segundo semestre de 2022.
 Nesse período, estava a cursar o quarto semestre do curso de Ciência da Computação pela UFPEL.
 
 
-### Algorithms and data structures 3
+### Algorithms and data structures 2
 
 Activities carried out during the ADS course in the second half of 2023.
 
